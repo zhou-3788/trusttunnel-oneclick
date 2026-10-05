@@ -1,0 +1,26 @@
+# 运行时生成的配置、口令和导入链接
+state.json
+credentials.toml
+vpn.toml
+hosts.toml
+client-link.txt
+.env
+.env.*
+
+# 证书、私钥和备份
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+certs/
+certs-backup*/
+port-backup*/
+
+# 本地临时文件
+*.log
+*.tmp
+*.zip
+__pycache__/
+.DS_Store
