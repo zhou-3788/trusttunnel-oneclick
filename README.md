@@ -1,5 +1,7 @@
 # TrustTunnel 中文一键安装与管理
 
+简体中文 | [English](README.en.md)
+
 为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2**。
 
 本项目是独立的安装与管理脚本；服务端程序由 [TrustTunnel 官方仓库](https://github.com/TrustTunnel/TrustTunnel)下载。
