@@ -2,6 +2,12 @@
 
 [简体中文](CHANGELOG.md) | English
 
+## v1.2.1 — 2026-10-05
+
+- Remove personal identifiers from the default username and exported server name; use `ttuser` and `TrustTunnel`.
+- Use `tt.example.com` for domain examples; deployment environments supply real domains, IP addresses, and credentials.
+- Preserve credentials in existing installations and refresh published checksums.
+
 ## v1.2 — 2026-10-05
 
 - Add an English script, README, and changelog. Both languages manage the same service and configuration.

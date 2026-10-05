@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TrustTunnel one-click installer and manager v1.2 — 2026-10-05
+# TrustTunnel one-click installer and manager v1.2.1 — 2026-10-05
 # Compatibility marker for the shared tt-menu ownership checks:
 # TrustTunnel 中文一键安装与管理
 # Supported: Debian 12+ / Ubuntu 22.04+, x86_64 / aarch64, systemd, public IPv4.
@@ -17,7 +17,7 @@ set +x
 set -Eeuo pipefail
 umask 077
 
-MANAGER_VERSION="1.2"
+MANAGER_VERSION="1.2.1"
 # Change the initial default here, or run TT_DEFAULT_PORT=9443 bash trusttunnel-oneclick-en.sh.
 DEFAULT_PORT="${TT_DEFAULT_PORT:-8443}"
 APP_DIR="/opt/trusttunnel-oneclick"
@@ -538,11 +538,11 @@ gather_inputs() {
             ask HOSTNAME "Domain covered by the certificate (without https:// or a port)"
             HOSTNAME=${HOSTNAME,,}
             valid_domain "$HOSTNAME" && break
-            warn "Enter a complete domain, for example tt.yourdomain.com."
+            warn "Enter a complete domain, for example tt.example.com."
         done
     fi
     while :; do
-        ask TT_USER "Connection username" "zhou"
+        ask TT_USER "Connection username" "ttuser"
         [[ "$TT_USER" =~ ^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$ ]] && break
         warn "Use letters, digits, underscores, or hyphens for the username; maximum 64 characters."
     done
@@ -723,7 +723,7 @@ export_to() {
     local temp="$destination.tmp"
     (cd "$CONF_DIR" && "$executable" "$CONF_DIR/vpn.toml" "$CONF_DIR/hosts.toml" \
         -c "$TT_USER" -a "$PUBLIC_IP:$PORT" --format deeplink \
-        --name "zhou-TrustTunnel" --dns-upstream 1.1.1.1) >"$temp"
+        --name "TrustTunnel" --dns-upstream 1.1.1.1) >"$temp"
     python3 - "$temp" <<'PY'
 import sys
 path = sys.argv[1]

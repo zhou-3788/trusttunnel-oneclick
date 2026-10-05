@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TrustTunnel 中文一键安装与管理 v1.2 — 2026-10-05
+# TrustTunnel 中文一键安装与管理 v1.2.1 — 2026-10-05
 # 适用：Debian 12+ / Ubuntu 22.04+，x86_64 / aarch64，systemd，公网 IPv4。
 # 上传到 VPS 后运行：bash trusttunnel-oneclick.sh（root 用户），选择 1。
 # 使用官方安装器和官方配置格式；配置/证书/链接目录仅 root 可读。
@@ -15,7 +15,7 @@ set +x
 set -Eeuo pipefail
 umask 077
 
-MANAGER_VERSION="1.2"
+MANAGER_VERSION="1.2.1"
 # 可在此修改初始默认端口，也可运行 TT_DEFAULT_PORT=9443 bash 本脚本。
 DEFAULT_PORT="${TT_DEFAULT_PORT:-8443}"
 APP_DIR="/opt/trusttunnel-oneclick"
@@ -536,11 +536,11 @@ gather_inputs() {
             ask HOSTNAME "证书对应的域名（不要带 https:// 或端口）"
             HOSTNAME=${HOSTNAME,,}
             valid_domain "$HOSTNAME" && break
-            warn "请填写完整域名，例如 tt.yourdomain.com。"
+            warn "请填写完整域名，例如 tt.example.com。"
         done
     fi
     while :; do
-        ask TT_USER "连接用户名" "zhou"
+        ask TT_USER "连接用户名" "ttuser"
         [[ "$TT_USER" =~ ^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$ ]] && break
         warn "用户名使用字母、数字、下划线或短横线，最长 64 字符。"
     done
@@ -721,7 +721,7 @@ export_to() {
     local temp="$destination.tmp"
     (cd "$CONF_DIR" && "$executable" "$CONF_DIR/vpn.toml" "$CONF_DIR/hosts.toml" \
         -c "$TT_USER" -a "$PUBLIC_IP:$PORT" --format deeplink \
-        --name "zhou-TrustTunnel" --dns-upstream 1.1.1.1) >"$temp"
+        --name "TrustTunnel" --dns-upstream 1.1.1.1) >"$temp"
     python3 - "$temp" <<'PY'
 import sys
 path = sys.argv[1]

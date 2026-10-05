@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-Install the official TrustTunnel server on a Debian or Ubuntu VPS with an English menu, configurable ports, existing certificate discovery, and mobile configuration links and QR codes. Current script version: **v1.2**.
+Install the official TrustTunnel server on a Debian or Ubuntu VPS with an English menu, configurable ports, existing certificate discovery, and mobile configuration links and QR codes. Current script version: **v1.2.1**.
 
 This is an independent installation and management script. Server binaries are downloaded from the [official TrustTunnel repository](https://github.com/TrustTunnel/TrustTunnel).
 
@@ -17,6 +17,8 @@ curl -fL --retry 3 --connect-timeout 15 --max-time 180 https://raw.githubusercon
 If curl is missing, install it with `apt-get update && apt-get install -y curl ca-certificates`.
 
 Select **1** to install. Confirm the public IP, port, certificate mode, and connection username. Press Enter at the password prompt to generate a random password. Download the script to a file before running it so interactive input remains available and the management shortcut can be installed.
+
+New installations default to username `ttuser` and exported server name `TrustTunnel`; domain examples use `tt.example.com`. Real IP addresses, domains, and credentials are entered on the VPS or read from local certificates, rather than embedded in the source. Existing installations keep their current username and password.
 
 After a new installation, reopen the saved management menu with:
 
@@ -156,5 +158,7 @@ sha256sum -c SHA256SUMS
 ```
 
 v1.2 has passed Bash syntax checks, discovery and validation with real OpenSSL certificates, and simulated installation, port changes, and rollback checks. Downloads, systemd, and firewall operations are mocked in those tests. Test actual VPS and mobile connectivity after deployment.
+
+v1.2.1 removes personal identifiers from defaults and has passed Bash syntax, default input, exported server name, simulated installation, and port rollback checks.
 
 Official documentation: [Server configuration](https://github.com/TrustTunnel/TrustTunnel/blob/master/CONFIGURATION.md) · [Certificate renewal](https://github.com/TrustTunnel/TrustTunnel/blob/master/CERT_RENEWAL.md)

@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2**。
+为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2.1**。
 
 本项目是独立的安装与管理脚本；服务端程序由 [TrustTunnel 官方仓库](https://github.com/TrustTunnel/TrustTunnel)下载。
 
@@ -17,6 +17,8 @@ curl -fL --retry 3 --connect-timeout 15 --max-time 180 https://raw.githubusercon
 如果系统没有 curl，先执行 `apt-get update && apt-get install -y curl ca-certificates`。
 
 选择菜单 **1** 安装，然后按提示确认公网 IP、端口、证书方式和连接用户名。密码直接回车会生成随机密码。脚本需要先下载到本地文件再运行，以保留交互输入并安装管理快捷命令。
+
+首次安装的默认用户名为 `ttuser`，导出节点名称为 `TrustTunnel`；示例域名使用 `tt.example.com`。真实 IP、域名和连接凭据在 VPS 上输入或从本机证书中读取，不预置在源码中。已有安装继续使用原来的用户名和密码。
 
 安装完成后运行：
 
@@ -154,5 +156,7 @@ sha256sum -c SHA256SUMS
 ```
 
 v1.2 已通过 Bash 语法、真实 OpenSSL 证书扫描与校验，以及模拟安装、端口修改和回退检查。下载、systemd 和防火墙使用模拟环境验证；实际 VPS 与手机连通性需部署后测试。
+
+v1.2.1 清理默认值中的个人标识，并通过 Bash 语法、默认输入、导出节点名称及模拟安装和端口回退检查。
 
 官方资料：[服务端配置](https://github.com/TrustTunnel/TrustTunnel/blob/master/CONFIGURATION.md) · [证书续期](https://github.com/TrustTunnel/TrustTunnel/blob/master/CERT_RENEWAL.md)
