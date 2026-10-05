@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TrustTunnel 中文一键安装与管理 v1.2.1 — 2026-10-05
+# TrustTunnel 中文一键安装与管理 v1.2.2 — 2026-10-05
 # 适用：Debian 12+ / Ubuntu 22.04+，x86_64 / aarch64，systemd，公网 IPv4。
 # 上传到 VPS 后运行：bash trusttunnel-oneclick.sh（root 用户），选择 1。
 # 使用官方安装器和官方配置格式；配置/证书/链接目录仅 root 可读。
@@ -15,7 +15,7 @@ set +x
 set -Eeuo pipefail
 umask 077
 
-MANAGER_VERSION="1.2.1"
+MANAGER_VERSION="1.2.2"
 # 可在此修改初始默认端口，也可运行 TT_DEFAULT_PORT=9443 bash 本脚本。
 DEFAULT_PORT="${TT_DEFAULT_PORT:-8443}"
 APP_DIR="/opt/trusttunnel-oneclick"
@@ -824,6 +824,15 @@ show_config() {
         "$PUBLIC_IP" "$PORT" "$HOSTNAME" "$TT_USER" "$TT_PASSWORD"
     printf '\n协议：先用 HTTP/2 测试，再改为 QUIC。\n\n'
     cat "$CONF_DIR/client-link.txt"
+    cat <<'IMPORT'
+
+手机一键导入（先安装 TrustTunnel 客户端）：
+1. 在手机上复制上面完整的 tt://?... 链接，即 client-link.txt 中的完整内容。
+2. 用手机浏览器打开官方导入页：https://trusttunnel.org/qr.html
+3. 粘贴链接，点 Generate QR Code Locally（生成二维码）。
+4. 点 Open in TrustTunnel App（在 TrustTunnel 中打开），自动带入节点配置。
+5. 按提示保存，回到 Servers 开启连接，并允许系统 VPN 授权。
+IMPORT
     if command -v qrencode >/dev/null; then
         printf '\n配置二维码（终端窗口足够宽时可扫描）：\n'
         if ! qrencode -t ANSIUTF8 < "$CONF_DIR/client-link.txt"; then

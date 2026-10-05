@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-Install the official TrustTunnel server on a Debian or Ubuntu VPS with an English menu, configurable ports, existing certificate discovery, and mobile configuration links and QR codes. Current script version: **v1.2.1**.
+Install the official TrustTunnel server on a Debian or Ubuntu VPS with an English menu, configurable ports, existing certificate discovery, and mobile configuration links and QR codes. Current script version: **v1.2.2**.
 
 This is an independent installation and management script. Server binaries are downloaded from the [official TrustTunnel repository](https://github.com/TrustTunnel/TrustTunnel).
 
@@ -81,7 +81,13 @@ Certbot HTTP validation requires **TCP 80**. If an existing website occupies tha
 
 Install the [TrustTunnel Android client](https://play.google.com/store/apps/details?id=com.adguard.trusttunnel). Use **menu 2** to display the complete `tt://?...` link and terminal QR code.
 
-On your phone, open the [official TrustTunnel import page](https://trusttunnel.org/qr.html), paste the complete link, select **Generate QR Code Locally**, then **Open in TrustTunnel App**. Save the imported server, connect from the Servers screen, and allow the system VPN permission.
+**Import directly through the official page without entering server settings manually.** After installation or when selecting **menu 2**, the script displays these steps below the link:
+
+1. On your phone, copy the complete **`tt://?...` link** from `client-link.txt`, or copy the complete link displayed by menu 2.
+2. Open the [official TrustTunnel import page](https://trusttunnel.org/qr.html) in your phone browser.
+3. Paste the link and select **Generate QR Code Locally**.
+4. Select **Open in TrustTunnel App** to import the server settings automatically.
+5. Save the server, return to **Servers**, connect, and allow the system VPN permission.
 
 Test with **HTTP/2** first, then try **QUIC**. The script configures an IPv4 exit. Self-signed certificates are embedded in the exported link; keep client certificate verification enabled. Reimport the configuration after issuing a new self-signed certificate.
 

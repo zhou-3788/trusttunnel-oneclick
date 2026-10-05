@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2.1**。
+为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2.2**。
 
 本项目是独立的安装与管理脚本；服务端程序由 [TrustTunnel 官方仓库](https://github.com/TrustTunnel/TrustTunnel)下载。
 
@@ -79,7 +79,13 @@ bash trusttunnel-oneclick.sh --scan-certs /你的证书目录
 
 安装 [TrustTunnel 安卓客户端](https://play.google.com/store/apps/details?id=com.adguard.trusttunnel)。通过 **菜单 2** 查看完整 `tt://?...` 链接和终端二维码。
 
-在手机浏览器打开 [TrustTunnel 官方导入页面](https://trusttunnel.org/qr.html)，粘贴完整链接，点击 **Generate QR Code Locally**，再点击 **Open in TrustTunnel App**。保存导入的节点后，在 Servers 页面连接，并允许系统 VPN 授权。
+**官方导入页直接导入，无需手动填写节点参数。** 安装完成或选择菜单 **2** 时，脚本会在链接下方显示以下步骤：
+
+1. 在手机上复制 `client-link.txt` 中完整的 **`tt://?...` 链接**；也可复制菜单 2 展示的完整链接。
+2. 用手机浏览器打开 [TrustTunnel 官方导入页](https://trusttunnel.org/qr.html)。
+3. 粘贴链接，点 **Generate QR Code Locally（生成二维码）**。
+4. 再点 **Open in TrustTunnel App（在 TrustTunnel 中打开）**，自动带入节点配置。
+5. 按提示保存，回到 **Servers** 开启连接，并允许系统 VPN 授权。
 
 首次测试建议使用 **HTTP/2**，再测试 **QUIC**。脚本按 IPv4 出口生成配置。自签证书会包含在导出链接内，客户端保持证书验证开启。证书重新签发后，需要重新导入配置。
 

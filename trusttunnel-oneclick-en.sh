@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TrustTunnel one-click installer and manager v1.2.1 — 2026-10-05
+# TrustTunnel one-click installer and manager v1.2.2 — 2026-10-05
 # Compatibility marker for the shared tt-menu ownership checks:
 # TrustTunnel 中文一键安装与管理
 # Supported: Debian 12+ / Ubuntu 22.04+, x86_64 / aarch64, systemd, public IPv4.
@@ -17,7 +17,7 @@ set +x
 set -Eeuo pipefail
 umask 077
 
-MANAGER_VERSION="1.2.1"
+MANAGER_VERSION="1.2.2"
 # Change the initial default here, or run TT_DEFAULT_PORT=9443 bash trusttunnel-oneclick-en.sh.
 DEFAULT_PORT="${TT_DEFAULT_PORT:-8443}"
 APP_DIR="/opt/trusttunnel-oneclick"
@@ -826,6 +826,15 @@ show_config() {
         "$PUBLIC_IP" "$PORT" "$HOSTNAME" "$TT_USER" "$TT_PASSWORD"
     printf '\nProtocol: test with HTTP/2 first, then try QUIC.\n\n'
     cat "$CONF_DIR/client-link.txt"
+    cat <<'IMPORT'
+
+Import on your phone (install the TrustTunnel client first):
+1. Copy the complete tt://?... link above, which is also saved in client-link.txt.
+2. Open the official import page in your phone browser: https://trusttunnel.org/qr.html
+3. Paste the link and select Generate QR Code Locally.
+4. Select Open in TrustTunnel App to import the server settings automatically.
+5. Save the server, return to Servers, connect, and allow the system VPN permission.
+IMPORT
     if command -v qrencode >/dev/null; then
         printf '\nConfiguration QR code (scan when the terminal is wide enough):\n'
         if ! qrencode -t ANSIUTF8 < "$CONF_DIR/client-link.txt"; then

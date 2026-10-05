@@ -2,6 +2,11 @@
 
 [简体中文](CHANGELOG.md) | English
 
+## v1.2.2 — 2026-10-05
+
+- Display the official import page and five phone import steps wherever server links are shown, including after installation and in menu 2.
+- Add matching numbered steps to both READMEs and use the official URL without tracking parameters.
+
 ## v1.2.1 — 2026-10-05
 
 - Remove personal identifiers from the default username and exported server name; use `ttuser` and `TrustTunnel`.
