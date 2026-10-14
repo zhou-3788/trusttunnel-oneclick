@@ -1,10 +1,18 @@
-# TrustTunnel installer and manager
+# TrustTunnel One-Click Installer & Manager | Ubuntu / Debian VPS
 
-[简体中文](README.md) | English
+[简体中文 README](README.md) | **English**
 
-Install the official TrustTunnel server on a Debian or Ubuntu VPS with an English menu, configurable ports, existing certificate discovery, and mobile configuration links and QR codes. Current script version: **v1.2.2**.
+**TrustTunnel VPN one-click installation script** for an **Ubuntu or Debian VPS**. Deploy and manage a TrustTunnel server with an English CLI menu, HTTP/2 and QUIC (HTTP/3), TLS certificate management, and Android `tt://` configuration links and QR codes. Current management-script version: **v1.2.2**.
 
-This is an independent installation and management script. Server binaries are downloaded from the [official TrustTunnel repository](https://github.com/TrustTunnel/TrustTunnel).
+### Features at a glance
+
+- **One-click setup and management** on Debian 12+ / Ubuntu 22.04+ (x86_64 / aarch64), using systemd.
+- **HTTP/2 and QUIC / HTTP/3** endpoints with TCP and UDP listeners for testing different network conditions.
+- **TLS certificate support**: Certbot issuance and automatic renewal, self-signed certificates, and discovery of existing certificates.
+- **Android client import** via a TrustTunnel `tt://` deep link or terminal QR code.
+- **Maintenance menu** for status and logs, port changes, and official server binary updates with rollback on startup failure.
+
+> **Project status:** This is an independent, community-maintained installer, **not an official TrustTunnel project**. Server binaries are downloaded from the [official TrustTunnel repository](https://github.com/TrustTunnel/TrustTunnel); the installer does not change the protocol implementation.
 
 ## Quick start
 
