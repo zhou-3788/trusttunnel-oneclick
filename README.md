@@ -1,10 +1,18 @@
-# TrustTunnel 中文一键安装与管理
+# TrustTunnel 一键安装脚本 | TrustTunnel One-Click Installer（中文 / English）
 
-简体中文 | [English](README.en.md)
+**简体中文** | [English README](README.en.md)
 
-为 Debian / Ubuntu VPS 安装官方 TrustTunnel 服务端，提供中文交互菜单、可修改端口、已有证书扫描，以及手机配置链接和二维码。当前脚本版本：**v1.2.2**。
+适用于 **Ubuntu / Debian VPS** 的 **TrustTunnel VPN 一键安装与管理脚本**。支持中文菜单、HTTP/2、QUIC（HTTP/3）、TLS 证书管理、安卓客户端 `tt://` 链接及二维码导入，无需手工编写服务端配置。当前管理脚本版本：**v1.2.2**。
 
-本项目是独立的安装与管理脚本；服务端程序由 [TrustTunnel 官方仓库](https://github.com/TrustTunnel/TrustTunnel)下载。
+### 功能速览
+
+- **一键部署与管理**：Debian 12+ / Ubuntu 22.04+，支持 x86_64 / aarch64；使用 systemd 管理服务。
+- **HTTP/2 + QUIC / HTTP/3**：同时配置 TCP 和 UDP 监听端口，方便在不同网络环境下测试。
+- **TLS 证书**：支持 Certbot 申请并自动续期、自签证书，以及自动扫描和复用已有证书。
+- **手机快速导入**：生成 TrustTunnel 安卓客户端的 `tt://` 配置链接与终端二维码。
+- **日常维护**：中文交互菜单、修改端口、服务状态与日志、官方核心更新失败回退。
+
+> **项目说明**：这是社区维护的第三方安装与管理工具，并非 TrustTunnel 官方项目。服务端程序从 [TrustTunnel 官方仓库](https://github.com/TrustTunnel/TrustTunnel)下载；此脚本本身不修改官方协议实现。
 
 ## 一键运行
 
